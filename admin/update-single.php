@@ -1,13 +1,7 @@
 <?php
 /* create db connection  */
-$host       = "localhost";
-$username   = "phpmyadmin";
-$password   = "phpmyadmin";
-$dbname     = "test";
-$dsn        = "mysql:host=$host;dbname=$dbname";
-$options    = array(
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-              );
+require "config.php";
+
 
 if (isset($_POST['submit'])) { /* extract user data sent in form */
 
@@ -15,8 +9,11 @@ if (isset($_POST['submit'])) { /* extract user data sent in form */
     $connection = new PDO($dsn, $username, $password, $options);
 
     $user =[
-      "id"        => $_POST['id'],
+      "id"           => $_POST['id'],
       "cand_number"  => $_POST['cand_number'],
+      "test_date"    => $_POST['test_date'],
+      "DOB"          => $_POST['DOB'],
+      "IDN"          => $_POST['IDN'],
       "overall_band" => $_POST['overall_band'],
       "listening"    => $_POST['listening'],
       "reading"      => $_POST['reading'],
@@ -27,9 +24,12 @@ if (isset($_POST['submit'])) { /* extract user data sent in form */
     /*edit the selected user based on their id */
     $sql = "UPDATE marks
             SET id = :id,
-                cand_number = :cand_number, 
-                overall_band = :overall_band, 
-                listening = :listening, 
+                cand_number = :cand_number,
+                overall_band = :overall_band,
+                test_date  = :test_date,
+                DOB = :DOB,
+                IDN = :IDN,
+                listening = :listening,
                 reading = :reading,
                 writing = :writing,
                 speaking= :speaking

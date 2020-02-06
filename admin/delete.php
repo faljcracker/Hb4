@@ -1,14 +1,8 @@
 <?php
 
 /* setting up connection to database  using PDO php data object*/
-$host       = "localhost";
-$username   = "phpmyadmin";
-$password   = "phpmyadmin";
-$dbname     = "test";
-$dsn        = "mysql:host=$host;dbname=$dbname";
-$options    = array(
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-              );
+require "config.php";
+
 
 /* check for a submitted for using a try catch err block standard php rules */
 if (isset($_POST["submit"])) {
@@ -62,7 +56,7 @@ try {
 </head>
 <body>
 
-<div class= "container">
+<div class= "container-fluid p-5">
 <h2 class="my-5 text-primary"><strong>Delete items</strong></h2>
 
  <?php if (isset($_POST['submit']) && $statement) : ?>
@@ -77,6 +71,9 @@ try {
       <tr>
          <th>id</th>
           <th>Candidate Number</th>
+          <th>Test Date</th>
+          <th>DOB</th>
+          <th>IDN</th>
           <th>Overall Band</th>
           <th>Listening</th>
           <th>Reading</th>
@@ -90,6 +87,9 @@ try {
       <tr>
           <td><?php echo $row["id"]; ?></td>
           <td><?php echo $row["cand_number"]; ?></td>
+          <td><?php echo $row["test_date"]; ?></td>
+          <td><?php echo $row["DOB"]; ?></td>
+          <td><?php echo $row["IDN"]; ?></td>
           <td><?php echo $row["overall_band"]; ?></td>
           <td><?php echo $row["listening"]; ?></td>
           <td><?php echo $row["reading"]; ?></td>

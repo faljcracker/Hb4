@@ -1,14 +1,7 @@
 <?php
 
-/* database connection */
-$host       = "localhost";
-$username   = "phpmyadmin";
-$password   = "phpmyadmin";
-$dbname     = "test";
-$dsn        = "mysql:host=$host;dbname=$dbname";
-$options    = array(
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-              );
+require "config.php";
+
 /* get information form database based on query */
 try {
   $connection = new PDO($dsn, $username, $password, $options);
@@ -35,7 +28,7 @@ try {
 </head>
 <body>
 
-<div class= "container">
+<div class= "container-fluid p-5">
 <h2 class="my-5 text-primary"><strong>Update items</strong></h2>
 
 <table class="table">
@@ -43,6 +36,9 @@ try {
         <tr>
           <th>id</th>
           <th>Candidate Number</th>
+          <th>Test Date</th>
+          <th>DOB</th>
+          <th>IDN</th>
           <th>Overall Band</th>
           <th>Listening</th>
           <th>Reading</th>
@@ -56,6 +52,9 @@ try {
         <tr>
           <td><?php echo $row["id"]; ?></td>
           <td><?php echo $row["cand_number"]; ?></td>
+          <td><?php echo $row["test_date"]; ?></td>
+          <td><?php echo $row["DOB"]; ?></td>
+          <td><?php echo $row["IDN"]; ?></td>
           <td><?php echo $row["overall_band"]; ?></td>
           <td><?php echo $row["listening"]; ?></td>
           <td><?php echo $row["reading"]; ?></td>

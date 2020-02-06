@@ -42,3 +42,12 @@ body {
 .yellow {
   background-color: #f5ed84;
 }
+
+.table-bordered {
+  border: 1px solid black;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid black;
+}

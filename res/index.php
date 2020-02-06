@@ -1,13 +1,7 @@
 <?php
 /* create database connection  */
-$host       = "localhost";
-$username   = "phpmyadmin";
-$password   = "phpmyadmin";
-$dbname     = "test";
-$dsn        = "mysql:host=$host;dbname=$dbname";
-$options    = array(
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-              );
+require "../admin/config.php";
+
 
 if (isset($_POST['submit'])) { /* check for form submission */
 
@@ -35,52 +29,54 @@ if (isset($_POST['submit'])) { /* check for form submission */
 <?php require "templates/header.html"; ?>
 
 <?php
-if (isset($_POST['submit'])) { 
-    
+if (isset($_POST['submit'])) {
+
     /* loop through returned results and place in tables */
     if ($result && $statement->rowCount() > 0) { ?>
 
+
+
     <script type='text/javascript'>alert('Please scroll down to view your results.');</script>
 
-    <div class="my-4 p-3">
+    <div class="my-4 p-3 ">
 
         <h5 class=" font-weight-bold py-2">Your Test Result</h5>
 
         <?php foreach ($result as $row) : ?>
-     
+
         <table class="table table-sm table-borderless">
 
              <tr>
                 <th class="">Candidate Number:</th>
-                  <td><?php echo $row["cand_number"]; ?></td>
+                  <td class=""><?php echo $row["cand_number"]; ?></td>
             </tr>
         </table>
 
-        <table class="table table-bordered">
+        <table class="table-sm table-bordered">
 
              <tr>
-                <th class="">Overall Band</th>
-                <td><?php echo $row["overall_band"]; ?></td>
+                <th class="px-4 py-2">Overall Band</th>
+                <td class="px-3 py-2"><?php echo $row["overall_band"]; ?></td>
              </tr>
 
              <tr>
-                <th class="">Listening</th>
-                <td><?php echo $row["listening"]; ?></td>
+                <th class="px-4 py-2">Listening</th>
+                <td class="px-3 py-2"><?php echo $row["listening"]; ?></td>
             </tr>
 
             <tr>
-                <th class="">Reading</th>
-                <td><?php echo $row["reading"]; ?></td>
+                <th class="px-4 py-2">Reading</th>
+                <td class="px-3 py-2"><?php echo $row["reading"]; ?></td>
             </tr>
 
             <tr>
-                <th class="">Writing</th>
-                <td><?php echo $row["writing"]; ?></td>
+                <th class="px-4 py-2">Writing</th>
+                <td class="px-3 py-2"><?php echo $row["writing"]; ?></td>
             </tr>
 
             <tr>
-                <th class="">Speaking</th>
-                <td><?php echo $row["speaking"]; ?></td>
+                <th class="px-4 py-2">Speaking</th>
+                <td class="px-3 py-2"><?php echo $row["speaking"]; ?></td>
             </tr>
 
 
@@ -88,15 +84,18 @@ if (isset($_POST['submit'])) {
 
         </table>
 
-        <p class="py-2"><span class="font-weight-bold">Disclaimer:</span> Please note that this results are provisional and should not be used as an official confirmation of your achievement. We will not accept any responsibility in the event you do so.
         </div>
+    </div>
+        <p class="px-4"><span class="font-weight-bold">Disclaimer:</span>Please note that this online result is provisional and should not be used as an official official confirmation of your achievement.British council will not accept any responsibility in the event that your result fails to display here or for any error in your online results,wether due to a technical fault or administrative procedure.</p>
+
 
         <?php } else { ?>  <!-- display an error if no match is found -->
-       <script type='text/javascript'>alert('Sorry no match found for Candidate Number: <?php echo $_POST['cand_number']; ?>. Please verify and try again ');</script>
-
+        <script type='text/javascript'>alert('Sorry no match found for Candidate Number: <?php echo $_POST['cand_number']; ?>. Please verify and try again ');</script>
             <h6 class="mb-5">Sorry no match found for Candidate Number <strong class="text-danger"><?php echo $_POST['cand_number']; ?></strong>. Please verify and try again</h6>
+        </div>
             <?php }
            } ?>
+
 
 
 <?php require "templates/footer.html"; ?>

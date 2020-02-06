@@ -1,13 +1,6 @@
 <?php
-/* setup database connection */
-$host       = "localhost";
-$username   = "phpmyadmin";
-$password   = "phpmyadmin";
-$dbname     = "test";
-$dsn        = "mysql:host=$host;dbname=$dbname";
-$options    = array(
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-              );
+
+require "config.php";
 
 
 if (isset($_POST['submit'])) { /* check to see if any form has been submitted */
@@ -19,6 +12,9 @@ if (isset($_POST['submit'])) { /* check to see if any form has been submitted */
     $new_user = array(
       /*"id"           => $_POST['id'],*/
       "cand_number"  => $_POST['cand_number'],
+      "test_date"    => $_POST['test_date'],
+      "DOB"          => $_POST['DOB'],
+      "IDN"          => $_POST['IDN'],
       "overall_band" => $_POST['overall_band'],
       "listening"    => $_POST['listening'],
       "reading"      => $_POST['reading'],
@@ -74,6 +70,21 @@ if (isset($_POST['submit'])) { /* check to see if any form has been submitted */
     <div class="form-group">
     <label class="h5 font-weight-bold" for="cand_number">Candidate Number</label>
     <input class="form-control form-control-lg" type="text" name="cand_number" id="cand_number">
+    </div>
+
+    <div class="form-group">
+    <label class="h5 font-weight-bold" for="test_date">Test Date</label>
+    <input class="form-control form-control-lg" type="text" name="test_date" id="test_date" placeholder="">
+    </div>
+
+     <div class="form-group">
+    <label class="h5 font-weight-bold" for="DOB">Date Of Birth</label>
+    <input class="form-control form-control-lg" type="text" name="DOB" id="DOB">
+    </div>
+
+     <div class="form-group">
+    <label class="h5 font-weight-bold" for="IDN">Identification Document Number</label>
+    <input class="form-control form-control-lg" type="text" name="IDN" id="IDN">
     </div>
 
     <div class="form-group">
