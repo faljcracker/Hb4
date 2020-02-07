@@ -14,7 +14,7 @@
 
 <body>
 <div class= "container  my-5 p-5">
-	<h2 class="mb-5 "><strong>Admin Dashboard V1.0</strong></h2>
+	<h2 class="mb-5 "><strong>Admin Dashboard V1.1</strong></h2>
 
 <ul class="nav flex-column">
 	<li class="nav-item">
